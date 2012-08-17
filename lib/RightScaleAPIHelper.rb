@@ -64,11 +64,15 @@ module RightScaleAPIHelper
     end
 
     # Do a GET request against RightScale API
-    def get(query)
+    def get(query, values = {})
       begin
         #puts "#{@api_call}#{query}#{@formatting}"
 
-        resp = @conn.get("#{@api_call}#{query}#{@formatting}", @headers)
+        req = Net::HTTP::Get.new("#{@full_api_call}#{query}", @headers)
+        req.set_form_data(values)
+
+        resp = @conn.request(req)
+        
       rescue
         raise("Get query failed.\nError: #")
       end
@@ -95,14 +99,14 @@ module RightScaleAPIHelper
       resp = @conn.request(req)
     end
 
-    def self.parseInput(queryString)
-      if queryString =~ m/\?/
-
-      end
-
-      if queryString =~ m/^http::/
-        if
-      end
-    end
+#    def self.parseInput(queryString)
+#      if queryString =~ m/\?/
+#
+#      end
+#
+#      if queryString =~ m/^http::/
+#        if
+#      end
+#    end
   end
 end
