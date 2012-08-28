@@ -68,7 +68,7 @@ module RightScaleAPIHelper
       begin
         #puts "#{@api_call}#{query}#{@formatting}"
 
-        req = Net::HTTP::Get.new("#{@full_api_call}#{query}", @headers)
+        req = Net::HTTP::Get.new("#{@full_api_call}#{query}#{@formatting}", @headers)
         req.set_form_data(values)
 
         resp = @conn.request(req)
