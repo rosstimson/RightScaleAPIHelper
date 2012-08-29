@@ -42,7 +42,7 @@ module RightScaleAPIHelper
       @formatting = "?format=#{format}"
       @conn = Net::HTTP.new('my.rightscale.com', 443)
       @conn.use_ssl=true
-      unless verify_ssl do
+      unless verify_ssl 
         @conn.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
       if version != '1.0'
