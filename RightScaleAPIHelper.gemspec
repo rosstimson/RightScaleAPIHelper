@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "RightScaleAPIHelper"
-  s.version = "0.4.5"
+  s.version = "0.4.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Eric VanWieren"]
-  s.date = "2012-08-28"
+  s.date = "2012-08-29"
   s.description = "Simple wrapper for connecting and using the RightScale API. Eases the use of connecting with a username and password, and then provides an object to do GET, PUT, POST, DELETE requests. Returns an HTTP response."
   s.email = "eric@codex.org"
   s.extra_rdoc_files = [
