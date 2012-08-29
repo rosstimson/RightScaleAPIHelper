@@ -30,7 +30,7 @@ module RightScaleAPIHelper
     # against the RightScale API without authenticating again.
     # Inputs:   
     #   format = xml or js 
-    #   ersion = 1.0 # 1.5 to be supported soon
+    #   version = 1.0 # 1.5 to be supported soon
     def initialize(account, username, password, format = 'js', version = '1.0')
       # Set Default Variables
       rs_url = "https://my.rightscale.com"
