@@ -70,8 +70,9 @@ module RightScaleAPIHelper
     def get(query, values = {})
       begin
         #puts "#{@api_call}#{query}#{@formatting}"
+        request_value = api_request(query) 
 
-        req = Net::HTTP::Get.new("#{@full_api_call}#{query}#{@formatting}", @headers)
+        req = Net::HTTP::Get.new("#{request_value}#{@formatting}", @headers)
         req.set_form_data(values)
 
         resp = @conn.request(req)
@@ -83,7 +84,8 @@ module RightScaleAPIHelper
     end
 
     def post(query, values)
-      req = Net::HTTP::Post.new("#{@full_api_call}#{query}", @headers)
+      request_value = api_request(query) 
+      req = Net::HTTP::Post.new(request_value, @headers)
 
       req.set_form_data(values)
       resp = @conn.request(req)
@@ -92,24 +94,29 @@ module RightScaleAPIHelper
     end
 
     def delete(query)
-      req = Net::HTTP::Delete.new("#{@full_api_call}#{query}", @headers)
+      request_value = api_request(query) 
+      req = Net::HTTP::Delete.new(request_value, @headers)
       resp = @conn.request(req)
     end
 
     def put(query, values)
-      req = Net::HTTP::Put.new("#{@full_api_call}#{query}", @headers)
+      request_value = api_request(query) 
+      req = Net::HTTP::Put.new(request_value, @headers)
       req.set_form_data(values)
       resp = @conn.request(req)
     end
 
-#    def self.parseInput(queryString)
-#      if queryString =~ m/\?/
-#
-#      end
-#
-#      if queryString =~ m/^http::/
-#        if
-#      end
-#    end
+    def self.api_request(submitted_query)
+      if is_full_path(submitted_query)
+        return submitted_query
+      else
+        return "#{@full_api_call}#{submitted_query}"
+      end
+    end
+
+    # Function just to check if the path that is being passed is a full url or just the extension.
+    def self.is_full_path?(queryString)
+      (queryString =~ /^http/i) != nil
+    end
   end
 end
