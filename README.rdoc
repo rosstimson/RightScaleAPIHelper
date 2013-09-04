@@ -10,6 +10,11 @@ Example
   api_conn = RightScaleAPIHelper::Helper.new(123456, 'email@email.com', 'password')
 
   resp = api_conn.get("/deployments")
+
+  'or you can use the full api path'
+
+  resp = api_conn.get("https://my.rightscale.com/api/acct/######/deployments")
+ 
   puts resp.code  # Response code from RightScale
   puts resp.body  # xml or json response
 

@@ -78,7 +78,7 @@ module RightScaleAPIHelper
         resp = @conn.request(req)
         
       rescue
-        raise("Get query failed.\nError: #")
+        raise("Get query failed.\n Query string is #{request_value}#{@formatting}")
       end
       return resp
     end
@@ -106,8 +106,8 @@ module RightScaleAPIHelper
       resp = @conn.request(req)
     end
 
-    def self.api_request(submitted_query)
-      if is_full_path(submitted_query)
+    def api_request(submitted_query)
+      if is_full_path?(submitted_query)
         return submitted_query
       else
         return "#{@full_api_call}#{submitted_query}"
@@ -115,7 +115,7 @@ module RightScaleAPIHelper
     end
 
     # Function just to check if the path that is being passed is a full url or just the extension.
-    def self.is_full_path?(queryString)
+    def is_full_path?(queryString)
       (queryString =~ /^http/i) != nil
     end
   end
