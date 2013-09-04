@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "RightScaleAPIHelper"
-  s.version = "0.4.6"
+  s.version = "0.5.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Eric VanWieren"]
-  s.date = "2012-08-29"
+  s.date = "2013-09-04"
   s.description = "Simple wrapper for connecting and using the RightScale API. Eases the use of connecting with a username and password, and then provides an object to do GET, PUT, POST, DELETE requests. Returns an HTTP response."
   s.email = "eric@codex.org"
   s.extra_rdoc_files = [
@@ -25,13 +25,15 @@ Gem::Specification.new do |s|
     "RightScaleAPIHelper.gemspec",
     "VERSION",
     "lib/RightScaleAPIHelper.rb",
+    "lib/rs_api_helper.rb",
+    "lib/rs_api_helper/connection.rb",
     "test/helper.rb",
     "test/test_RightScaleAPIHelper.rb"
   ]
   s.homepage = "http://github.com/evanwieren/RightScaleAPIHelper"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.25"
   s.summary = "Simple wrapper for connecting to RightScale API and make Calls"
 
   if s.respond_to? :specification_version then
