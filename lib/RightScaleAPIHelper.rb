@@ -107,12 +107,12 @@ module RightScaleAPIHelper
     end
 
     def api_request(submitted_query)
-      is_full_path?(submitted_query) ? return submitted_query : return "#{@full_api_call}#{submitted_query}"
+      is_full_path?(submitted_query) ? submitted_query : "#{@full_api_call}#{submitted_query}"
     end
 
     # Function just to check if the path that is being passed is a full url or just the extension.
     def is_full_path?(queryString)
-      (queryString =~ /^http/i) != nil
+      !!(queryString =~ /^http/i)
     end
   end
 end
