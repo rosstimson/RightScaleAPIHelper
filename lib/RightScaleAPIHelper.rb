@@ -34,13 +34,13 @@ module RightScaleAPIHelper
     #   verify_ssl = true|false # For windows machines to prevent SSL error from being thrown.
     def initialize(account, username, password, format = 'js', version = '1.0', verify_ssl = true)
       # Set Default Variables
-      rs_url = "https://my.rightscale.com"
+      rs_url = "https://us-3.rightscale.com"
       api_url = '/api/acct/'
       @api_call = "#{api_url}#{account}"
       @full_api_call = "#{rs_url}#{@api_call}"
       @format=format
       @formatting = "?format=#{format}"
-      @conn = Net::HTTP.new('my.rightscale.com', 443)
+      @conn = Net::HTTP.new('us-3.rightscale.com', 443)
       @conn.use_ssl=true
       unless verify_ssl 
         @conn.verify_mode = OpenSSL::SSL::VERIFY_NONE
